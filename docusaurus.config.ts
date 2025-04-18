@@ -20,8 +20,9 @@ const config: Config = {
   organizationName: 'j1NsiLei', // Usually your GitHub org/user name.
   projectName: 'j1NsiLei.github.io', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'warn',
+  deploymentBranch: 'gh-pages',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -30,18 +31,7 @@ const config: Config = {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans'],
   },
-  // 搜索插件配置
-  themes: [
-    [
-      '@easyops-cn/docusaurus-search-local',
-      {
-        hashed: true,
-        language: ['zh'],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      },
-    ],
-  ],
+
   presets: [
     [
       'classic',
@@ -74,7 +64,18 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  plugins: [
+       [
+         '@easyops-cn/docusaurus-search-local',
+         {
+           hashed: true,               // 生成哈希提高安全性
+           language: ['zh'],           // 支持中文搜索
+           highlightSearchTermsOnTargetPage: true,  // 高亮搜索关键词
+           docsRouteBasePath: '/docs', // 如果你的文档路径是 /docs
+           blogRouteBasePath: '/blog', // 如果你的博客路径是 /blog
+         },
+       ],
+     ],
   themeConfig: 
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   ({
@@ -86,6 +87,9 @@ const config: Config = {
       textColor: '#091E42',
       isCloseable: true,
     }, 
+    search: {
+      provider: 'local', // 关键：启用本地搜索
+    },
     navbar: {
       title: '学习笔记',
       hideOnScroll: true,
@@ -93,6 +97,7 @@ const config: Config = {
         alt: 'My Site Logo',
         src: 'img/favicon.ico',
       },
+
       items: [
         {
           type: 'docSidebar',
@@ -144,7 +149,6 @@ const config: Config = {
         {
           type: 'search',
           position: 'right',
-          //className: '/search.css',
         },
         // {
         //   href: 'https://github.com/facebook/docusaurus',
