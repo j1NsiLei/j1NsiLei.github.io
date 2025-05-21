@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjsl_blog=self.webpackChunkjsl_blog||[]).push([[8947],{6600:s=>{s.exports=JSON.parse('{"authors":[{"name":"jin","url":"https://github.com/","page":{"permalink":"/blog/authors/jsl"},"socials":{"github":"https://github.com/jsl"},"imageURL":"/img/favicon.ico","key":"jsl","count":2}]}')}}]);
